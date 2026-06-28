@@ -1,181 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Debug 1.0.2</title>
+  <meta charset="UTF-8">
+  <title>404 - Not Found</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Roboto&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-<style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Inter,Segoe UI,Arial,sans-serif;
-}
+    html, body {
+      height: 100%;
+      width: 100%;
+      font-family: 'Roboto', sans-serif;
+      overflow: hidden;
+    }
 
-body{
-    background:#0d1117;
-    color:#fff;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    min-height:100vh;
-    padding:20px;
-}
+    body {
+      background: linear-gradient(270deg, #0f2027, #203a43, #2c5364);
+      background-size: 600% 600%;
+      animation: gradientBG 15s ease infinite;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
 
-.card{
-    width:100%;
-    max-width:420px;
-    background:#161b22;
-    border:1px solid #30363d;
-    border-radius:20px;
-    padding:40px 30px;
-    text-align:center;
-    box-shadow:0 15px 40px rgba(0,0,0,.45);
-}
+    .container {
+      text-align: center;
+      animation: fadeIn 1.2s ease-out both;
+    }
 
-.logo{
-    width:80px;
-    height:80px;
-    margin:0 auto 20px;
-    border-radius:18px;
-    background:linear-gradient(135deg,#2563eb,#06b6d4);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-}
+    .glow {
+      font-size: 120px;
+      font-family: 'Orbitron', sans-serif;
+      background: linear-gradient(90deg, #00ffe0, #ff6ec4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 20px rgba(0, 255, 224, 0.7), 0 0 30px rgba(255, 110, 196, 0.5);
+      animation: pulse 2s infinite alternate;
+    }
 
-.logo svg{
-    width:40px;
-    height:40px;
-    fill:white;
-}
+    p {
+      font-size: 22px;
+      color: #cccccc;
+      margin-top: 10px;
+    }
 
-h1{
-    font-size:28px;
-    margin-bottom:8px;
-}
+    a {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 30px;
+      background: #00ffe0;
+      color: #111;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0;
+    }
 
-.version{
-    color:#8b949e;
-    margin-bottom:30px;
-    font-size:15px;
-}
+    a:hover {
+      background: #ff6ec4;
+      color: #fff;
+      box-shadow: 0 0 15px #ff6ec4, 0 0 30px #ff6ec4;
+    }
 
-.btn{
-    width:100%;
-    height:54px;
-    border:none;
-    border-radius:12px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:10px;
-    font-size:16px;
-    font-weight:600;
-    cursor:pointer;
-    text-decoration:none;
-    transition:.25s;
-    margin-bottom:15px;
-}
+    @keyframes pulse {
+      0% {
+        text-shadow: 0 0 10px #00ffe0, 0 0 20px #00ffe0;
+      }
+      100% {
+        text-shadow: 0 0 30px #ff6ec4, 0 0 60px #ff6ec4;
+      }
+    }
 
-.download{
-    background:#238636;
-    color:white;
-}
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
-.download:hover{
-    background:#2ea043;
-}
-
-.copy{
-    background:#21262d;
-    color:white;
-    border:1px solid #30363d;
-}
-
-.copy:hover{
-    background:#30363d;
-}
-
-.btn svg{
-    width:20px;
-    height:20px;
-    fill:currentColor;
-}
-
-#status{
-    margin-top:12px;
-    color:#58a6ff;
-    font-size:14px;
-    min-height:20px;
-}
-
-.footer{
-    margin-top:30px;
-    color:#6e7681;
-    font-size:13px;
-}
-</style>
-
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
 </head>
 <body>
-
-<div class="card">
-
-<div class="logo">
-<svg viewBox="0 0 24 24">
-<path d="M5 20h14v-2H5v2zm7-18l-5.5 5.5h3.5V15h4V7.5H17.5L12 2z"/>
-</svg>
-</div>
-
-<h1>Debug 1.0.2</h1>
-<p class="version">Latest Android Build</p>
-
-<a class="btn download"
-   href="app/debug1.0.2.apk"
-   download>
-
-<svg viewBox="0 0 24 24">
-<path d="M5 20h14v-2H5v2zm7-18v10.17l3.59-3.58L17 10l-5 5-5-5 1.41-1.41L11 12.17V2h1z"/>
-</svg>
-
-Download APK
-
-</a>
-
-<button class="btn copy" onclick="copyLink()">
-
-<svg viewBox="0 0 24 24">
-<path d="M16 1H4c-1.1 0-2 .9-2 2v12h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/>
-</svg>
-
-Copy Download Link
-
-</button>
-
-<p id="status"></p>
-
-<div class="footer">
-Secure Direct Download
-</div>
-
-</div>
-
-<script>
-function copyLink(){
-
-    const link = window.location.origin + "/accountmanager/update/app-debug.apk";
-
-    navigator.clipboard.writeText(link).then(()=>{
-        document.getElementById("status").innerText =
-        "Download link copied successfully.";
-    }).catch(()=>{
-        prompt("Copy this link:",link);
-    });
-
-}
-</script>
-
+  <div class="container">
+    <div class="glow">404</div>
+    <p>Oops! The page you're looking for doesn't exist.</p>
+    <a href="/">Go Back Home</a>
+  </div>
 </body>
 </html>
