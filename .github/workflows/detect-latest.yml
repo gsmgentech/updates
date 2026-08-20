@@ -1,0 +1,35 @@
+name: Detect Latest Inventory APK
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'inventory/update/*.apk'
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  update-latest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Detect latest APK
+        run: |
+          python3 - <<'PY'
+          import json,re
+          from pathlib import Path
+          folder=Path("inventory/update")
+          items=[]
+          for p in folder.glob("inventory*.apk"):
+              m=re.fullmatch(r"inventory[-_]?(\d+(?:\.\d+)*)\.apk",p.name,re.I)
+              if m: items.append((tuple(map(int,m.group(1).split("."))),m.group(1),p.name))
+          if not items: raise SystemExit("No matching APK found")
+          _,version,filename=max(items)
+          (folder/"latest.json").write_text(json.dumps({"version":version,"file":filename},indent=2)+"\n")
+          PY
+      - name: Commit latest update
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add inventory/update/latest.json
+          git diff --cached --quiet || git commit -m "Auto update latest Inventory APK"
+          git push
